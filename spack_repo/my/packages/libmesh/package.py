@@ -155,7 +155,7 @@ class Libmesh(AutotoolsPackage):
     depends_on("slepc", when="+slepc")
     depends_on("petsc", when="+petsc")
     depends_on("tbb", when="threads=tbb")
-    depends_on("vtk", when="+vtk")
+    depends_on("vtk+mpi", when="+vtk")
 
     def configure_args(self):
         options = []
