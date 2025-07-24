@@ -126,6 +126,7 @@ class Libmesh(AutotoolsPackage):
         multi=False,
     )
     variant("shared", default=True, description="Enables the build of shared libraries")
+    variant("poly2tri", default=False, description="Compile the poly2tri library")
 
     conflicts(
         "+metaphysicl",
@@ -323,6 +324,11 @@ class Libmesh(AutotoolsPackage):
             options.append("--with-tbb=%s" % self.spec["tbb"].prefix)
         else:
             options.append("--enable-tbb=no")
+
+        if "+poly2tri" in self.spec:
+            options.append("--enable-poly2tri=yes")
+        else:
+            options.append("--enable-poly2tri=no")
 
         return options
 
